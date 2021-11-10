@@ -82,7 +82,7 @@ class CategoryListView extends React.Component {
                     <br/>
                     <Row className="justify-content-md-center">
                         <Col>
-                                <Row className="resultDiv justify-content-md-center" md={12}>
+                                <Row className="resultDiv" md={12}>
                                     <Col style={{textAlign:"left"}} md={4}>
                                        <div className="rounded-circle-red-result">
                                           <Image className="resultSvg"  src={process.env.PUBLIC_URL + '/assets/DontPet.svg'} />
@@ -99,7 +99,7 @@ class CategoryListView extends React.Component {
                                 </Row>
                         </Col>
                         <Col>
-                             <Row className="resultDiv justify-content-md-center" md={12}>
+                             <Row className="resultDiv" md={12}>
                                     <Col style={{textAlign:"left"}} md={4}>
                                         <div className="rounded-circle-gray-result">
                                           <Image className="resultSvg" src={process.env.PUBLIC_URL + '/assets/Skip.svg'} />
@@ -116,7 +116,7 @@ class CategoryListView extends React.Component {
                                 </Row>
                         </Col>
                         <Col>
-                                <Row className="resultDiv justify-content-md-center" md={12}>
+                                <Row className="resultDiv" md={12}>
                                     <Col style={{textAlign:"left"}} md={4}>
                                         <div className="rounded-circle-green-result">
                                           <Image className="resultSvg" src={process.env.PUBLIC_URL + '/assets/Pet.svg'} />
