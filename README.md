@@ -1,11 +1,15 @@
 # Getting Started with Create React App
 
+App designed to use thecatAPI. After cloning or getting a copy of the app, create .env file and copy the contents from .env.example.
+Set your api key. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.\
