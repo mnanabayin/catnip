@@ -2,6 +2,7 @@ import React from "react"
 import {
     Container,Row,Col,Image,Button
   } from 'react-bootstrap'
+import Category from './Category'
 
 class CategoryListView extends React.Component {
     constructor(props) 
@@ -14,12 +15,10 @@ class CategoryListView extends React.Component {
             petIt:0,
             skipIt:0,
             dontPetIt:0,
+            isNewcategory:false
         }
     }
 
-    async componentDidMount() {
-       
-    }
 
     nextItem = () => {
         this.setState({ nextImage: this.state.nextImage + 1 });
@@ -49,7 +48,18 @@ class CategoryListView extends React.Component {
         this.setState({ nextImage: 0, dontPetIt: 0, skipIt: 0, petIt: 0 });
     }
 
+    newCategory = ()=>
+    {
+        this.restartSameCategory()
+        this.setState({isNewcategory:true})
+    }
+
     render() {
+
+        if(this.state.isNewcategory)
+        {
+            return(<Category/>)
+        }
 
         if (this.state.nextImage === this.state.imageUrlList.length) 
         {
@@ -58,57 +68,66 @@ class CategoryListView extends React.Component {
                 <>
                 <Container>
                     <Row className="justify-content-md-center"> 
-                    <Col className="imageCol2">
-                        <Image src={process.env.PUBLIC_URL + '/assets/Logo.svg'} className="App-logo"/>
-                        <br/>
-                        <span> <strong>{'>'} Stats</strong></span>
-                        <br/>
-                        <span><strong>Cats seen: {this.state.nextImage}</strong></span>
-                    </Col>
+                        <Col className="imageCol2">
+                            <Image src={process.env.PUBLIC_URL + '/assets/Logo.svg'} className="App-logo"/>
+                            <br/>
+                            <br/>
+                            <span> <strong>{'>'} Stats</strong></span>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <span>Cats seen: {this.state.nextImage}</span>
+                        </Col>
                     </Row>
                     <br/>
                     <Row className="justify-content-md-center">
-                        <Col  md="4">
+                        <Col>
                                 <Row className="resultDiv row">
                                     <Col style={{textAlign:"left"}}>
-                                        <Image style={{paddingTop:"15px",paddingBottom:"10px"}} src={process.env.PUBLIC_URL + '/assets/DontPet.svg'} />
+                                       <div className="rounded-circle-red-result">
+                                          <Image className="resultSvg"  src={process.env.PUBLIC_URL + '/assets/DontPet.svg'} />
+                                       </div>
                                     </Col>
-                                    <Col style={{textAlign:"right"}}>
-                                         <div style={{textAlign:"right"}}>
-                                            <span style={{color:"#EF4444",fontSize:"18px !important"}}><strong>{this.state.dontPetIt}</strong></span>
+                                    <Col>
+                                         <div className="resultVal">
+                                            <h2 style={{color:"#EF4444"}}><strong>{this.state.dontPetIt}</strong></h2>
                                          </div>
-                                         <div style={{width:"90px"}}>
-                                            <span style={{fontSize:"10px",textJustify:"left"}}><strong>Cats you didn't pet</strong></span>
+                                         <div className="resultTxt" >
+                                            <h6 style={{textAlign:"right"}}><strong>Cats you didn't pet</strong></h6>
                                          </div>
                                     </Col>
                                 </Row>
                         </Col>
-                        <Col  md="4">
+                        <Col>
                              <Row className="resultDiv row">
                                     <Col style={{textAlign:"left"}}>
-                                        <Image style={{paddingTop:"15px",paddingBottom:"10px"}} src={process.env.PUBLIC_URL + '/assets/Skip.svg'} />
+                                        <div className="rounded-circle-gray-result">
+                                          <Image className="resultSvg" src={process.env.PUBLIC_URL + '/assets/Skip.svg'} />
+                                        </div>
                                     </Col>
-                                    <Col style={{textAlign:"right"}}>
-                                         <div style={{textAlign:"right"}}>
-                                            <span style={{color:"gray",fontSize:"18px !important"}}><strong>{this.state.skipIt}</strong></span>
+                                    <Col>
+                                         <div className="resultVal">
+                                            <h2 style={{color:"gray"}}><strong>{this.state.skipIt}</strong></h2>
                                          </div>
-                                         <div style={{width:"90px"}}>
-                                            <span style={{fontSize:"10px",textJustify:"left"}}><strong>Cats you skipped</strong></span>
+                                         <div className="resultTxt">
+                                            <h6 style={{textAlign:"right"}}><strong>Cats you skipped</strong></h6>
                                          </div>
                                     </Col>
                                 </Row>
                         </Col>
-                        <Col  md="4">
+                        <Col>
                                 <Row className="resultDiv row">
                                     <Col style={{textAlign:"left"}}>
-                                        <Image style={{paddingTop:"15px",paddingBottom:"10px"}} src={process.env.PUBLIC_URL + '/assets/Pet.svg'} />
+                                        <div className="rounded-circle-green-result">
+                                          <Image className="resultSvg" src={process.env.PUBLIC_URL + '/assets/Pet.svg'} />
+                                        </div>
                                     </Col>
-                                    <Col style={{textAlign:"right"}}>
-                                         <div style={{textAlign:"right"}}>
-                                            <span style={{color:"#10B981",fontSize:"18px !important"}}><strong>{this.state.petIt}</strong></span>
+                                    <Col>
+                                         <div className="resultVal">
+                                            <h2 style={{color:"#10B981"}}><strong>{this.state.petIt}</strong></h2>
                                          </div>
-                                         <div style={{width:"90px"}}>
-                                            <span style={{fontSize:"10px",textJustify:"left"}}><strong>Cats you petted</strong></span>
+                                         <div  className="resultTxt">
+                                            <h6 style={{textAlign:"right"}}><strong>Cats you petted</strong></h6>
                                          </div>
                                     </Col>
                                 </Row>
@@ -119,12 +138,12 @@ class CategoryListView extends React.Component {
                     <br/>
                     <Row className="justify-content-md-center">
                         <Col>
-                            <Button size="lg" className="buttons" onClick={() => this.restartSameCategory()} style={{backgroundColor:"#F28700",color:"white",borderColor:"#F28700"}}>RESTART IN SAME CATEGORY</Button>{' '}
+                            <Button className="buttons" onClick={() => this.restartSameCategory()} style={{backgroundColor:"#F28700",color:"white",borderColor:"#F28700"}}>RESTART IN SAME CATEGORY</Button>{' '}
                         </Col>
                     </Row>
                     <Row className="justify-content-md-center">
                         <Col>
-                            <Button variant="outline-dark" size="lg" className="buttons" onClick={() => window.location.reload(false)}>SELECT NEW CATEGORY</Button>{' '}
+                            <Button variant="outline-dark" className="buttons" onClick={() => this.newCategory()}>SELECT NEW CATEGORY</Button>{' '}
                         </Col>
                     </Row>
             </Container>
@@ -142,6 +161,7 @@ class CategoryListView extends React.Component {
                   <Col className="imageCol">
                      <Image src={process.env.PUBLIC_URL + '/assets/Logo.svg'} className="App-logo"/>
                      <br/>
+                     <br/>
                      <span> <strong>{'>'} {this.state.categoryName[0].toUpperCase() + this.state.categoryName.substring(1)}</strong></span>
                   </Col>
                 </Row>
@@ -155,27 +175,32 @@ class CategoryListView extends React.Component {
                 <Row className="justify-content-md-center">
                       <Col  md="auto">
                             <div className="imgDiv">
-                                     <Image className="categoryViewImage" src={this.state.imageUrlList[this.state.nextImage]} thumbnail/>
+                                     <Image className="categoryViewImage" src={this.state.imageUrlList[this.state.nextImage]}/>
                             </div>
                          <div className="categoryView">
-                         <span style={{color:"gray",fontSize:"10px"}}> {this.state.nextImage + 1}/{this.state.imageUrlList.length}</span>
+                         <span style={{color:"gray",fontSize:"12px"}}> Cat {this.state.nextImage + 1}/{this.state.imageUrlList.length}</span>
                             <br/>
                              <Row>
                                  <Col>
-                                     <Image src={process.env.PUBLIC_URL + '/assets/DontPet.svg'} onClick={() => this.dontPetIt()}/>
+                                     <div className="rounded-circle-red"  onClick={() => this.dontPetIt()}>
+                                         <Image src={process.env.PUBLIC_URL + '/assets/DontPet.svg'}/>
+                                     </div>
                                      <br/>
-                                     <span style={{color:"#EF4444",fontSize:"10px"}}> Don't pet it!</span>
-                                     
+                                     <span style={{color:"#EF4444",fontSize:"13px"}}> Don't pet it!</span>
                                 </Col>
                                 <Col>
-                                     <Image src={process.env.PUBLIC_URL + '/assets/Skip.svg'} onClick={() => this.skipIt()}/>
+                                     <div className="rounded-circle-gray" onClick={() => this.skipIt()}>
+                                        <Image src={process.env.PUBLIC_URL + '/assets/Skip.svg'} />
+                                     </div>
                                      <br/>
-                                     <span style={{color:"gray",fontSize:"10px"}}>Skip it!</span>
+                                     <span style={{color:"gray",fontSize:"13px"}}>Skip it!</span>
                                 </Col>
                                 <Col>
-                                     <Image src={process.env.PUBLIC_URL + '/assets/Pet.svg'} onClick={() => this.petIt()}/>
+                                    <div className="rounded-circle-green" onClick={() => this.petIt()}> 
+                                         <Image src={process.env.PUBLIC_URL + '/assets/Pet.svg'} />
+                                    </div>
                                      <br/>
-                                     <span style={{color:"#10B981",fontSize:"10px"}}>Pet it!</span>
+                                     <span style={{color:"#10B981",fontSize:"13px"}}>Pet it!</span>
                                 </Col>
                             </Row>
                          </div>
