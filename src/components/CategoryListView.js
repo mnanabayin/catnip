@@ -82,13 +82,13 @@ class CategoryListView extends React.Component {
                     <br/>
                     <Row className="justify-content-md-center">
                         <Col>
-                                <Row className="resultDiv row">
-                                    <Col style={{textAlign:"left"}}>
+                                <Row className="resultDiv justify-content-md-center" md={12}>
+                                    <Col style={{textAlign:"left"}} md={4}>
                                        <div className="rounded-circle-red-result">
                                           <Image className="resultSvg"  src={process.env.PUBLIC_URL + '/assets/DontPet.svg'} />
                                        </div>
                                     </Col>
-                                    <Col>
+                                    <Col md={8}>
                                          <div className="resultVal">
                                             <h2 style={{color:"#EF4444"}}><strong>{this.state.dontPetIt}</strong></h2>
                                          </div>
@@ -99,14 +99,14 @@ class CategoryListView extends React.Component {
                                 </Row>
                         </Col>
                         <Col>
-                             <Row className="resultDiv row">
-                                    <Col style={{textAlign:"left"}}>
+                             <Row className="resultDiv justify-content-md-center" md={12}>
+                                    <Col style={{textAlign:"left"}} md={4}>
                                         <div className="rounded-circle-gray-result">
                                           <Image className="resultSvg" src={process.env.PUBLIC_URL + '/assets/Skip.svg'} />
                                         </div>
                                     </Col>
                                     <Col>
-                                         <div className="resultVal">
+                                         <div className="resultVal" md={8}>
                                             <h2 style={{color:"gray"}}><strong>{this.state.skipIt}</strong></h2>
                                          </div>
                                          <div className="resultTxt">
@@ -116,14 +116,14 @@ class CategoryListView extends React.Component {
                                 </Row>
                         </Col>
                         <Col>
-                                <Row className="resultDiv row">
-                                    <Col style={{textAlign:"left"}}>
+                                <Row className="resultDiv justify-content-md-center" md={12}>
+                                    <Col style={{textAlign:"left"}} md={4}>
                                         <div className="rounded-circle-green-result">
                                           <Image className="resultSvg" src={process.env.PUBLIC_URL + '/assets/Pet.svg'} />
                                         </div>
                                     </Col>
                                     <Col>
-                                         <div className="resultVal">
+                                         <div className="resultVal" md={8}>
                                             <h2 style={{color:"#10B981"}}><strong>{this.state.petIt}</strong></h2>
                                          </div>
                                          <div  className="resultTxt">
