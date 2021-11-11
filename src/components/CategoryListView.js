@@ -173,10 +173,10 @@ class CategoryListView extends React.Component {
                 </Row>
                 <br/>
                 <Row className="justify-content-md-center">
-                      <Col  md="auto">
-                            <div className="imgDiv">
+                      <Col  xs={12}>
+                           
                                      <Image className="categoryViewImage" src={this.state.imageUrlList[this.state.nextImage]}/>
-                            </div>
+                            
                          <div className="categoryView">
                          <span style={{color:"gray",fontSize:"12px"}}> Cat {this.state.nextImage + 1}/{this.state.imageUrlList.length}</span>
                             <br/>
